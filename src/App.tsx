@@ -14,7 +14,7 @@ import {
   isWordInWordList,
   isWinningWord,
   solution,
-  solutionIndex,
+  //solutionIndex,
 } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
@@ -37,7 +37,7 @@ function App() {
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
-  const [shareComplete, setShareComplete] = useState(false)
+  //const [shareComplete, setShareComplete] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
     if (loaded?.currentSolution !== currentSolution) {
