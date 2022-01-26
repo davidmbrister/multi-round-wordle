@@ -200,11 +200,11 @@ function App() {
         message={`You lost, the word was ${currentSolution}`}
         isOpen={isGameLost}
       />
-      <Alert
+      {/*  <Alert
         message="Game copied to clipboard"
         isOpen={shareComplete}
         variant="success"
-      />
+      /> */}
     </div>
   )
 }
