@@ -143,6 +143,7 @@ function App() {
         guesses={guesses}
       />
       <WinModal
+        wonGames={wonGames}
         isOpen={isWinModalOpen}
         solution={currentSolution}
         handleClose={() => setIsWinModalOpen(false)}

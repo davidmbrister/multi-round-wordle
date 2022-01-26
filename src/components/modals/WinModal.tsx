@@ -10,6 +10,7 @@ type Props = {
   guesses: string[]
   handleShare: () => void
   solution: string
+  wonGames: number
 }
 
 export const WinModal = ({
@@ -18,6 +19,7 @@ export const WinModal = ({
   guesses,
   handleShare,
   solution,
+  wonGames,
 }: Props) => {
   return (
     <BaseModal title="You won!" isOpen={isOpen} handleClose={handleClose}>
@@ -30,7 +32,7 @@ export const WinModal = ({
             as="h3"
             className="text-lg leading-6 font-medium text-gray-900"
           >
-            You won!
+            Complete! You completed {wonGames + 1} out of 5 puzzles!
           </Dialog.Title>
           <div className="mt-2">
             <MiniGrid guesses={guesses} solution={solution} />
