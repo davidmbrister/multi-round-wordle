@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/multi-round-wordle/static/css/main.1b347f0f.css",
+    "main.js": "/multi-round-wordle/static/js/main.928accf0.js",
+    "static/js/787.3500bfec.chunk.js": "/multi-round-wordle/static/js/787.3500bfec.chunk.js",
+    "index.html": "/multi-round-wordle/index.html",
+    "main.1b347f0f.css.map": "/multi-round-wordle/static/css/main.1b347f0f.css.map",
+    "main.928accf0.js.map": "/multi-round-wordle/static/js/main.928accf0.js.map",
+    "787.3500bfec.chunk.js.map": "/multi-round-wordle/static/js/787.3500bfec.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1b347f0f.css",
+    "static/js/main.928accf0.js"
+  ]
+}
