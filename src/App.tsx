@@ -112,15 +112,22 @@ function App() {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
 
-      if ((winningWord && wonGames === 4) || transpiredGames === 4) {
+      if (
+        (winningWord && transpiredGames === 4) ||
+        (winningWord && transpiredGames === 4)
+      ) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
         return setIsGameWon(true)
       }
-      if (winningWord && wonGames < 5) {
+      if (winningWord && wonGames < 4) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
         setWonGames(wonGames + 1)
         setTranspiredGames(transpiredGames + 1)
         return setIsSingleGameWon(true)
+      }
+      if (guesses.length === 5 && transpiredGames === 4) {
+        setStats(addStatsForCompletedGame(stats, guesses.length))
+        return setIsGameWon(true)
       }
       if (guesses.length === 5) {
         setStats(addStatsForCompletedGame(stats, guesses.length + 1))
