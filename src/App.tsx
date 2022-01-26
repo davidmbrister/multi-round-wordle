@@ -21,15 +21,20 @@ import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
 } from './lib/localStorage'
+import { SingleLossModal } from './components/modals/singleLossModal'
 
 function App() {
   const [currentSolution, setSolution] = useState(solution)
   // add numGamesWon state
   const [wonGames, setWonGames] = useState(0)
+  const [transpiredGames, setTranspiredGames] = useState(0)
   const [isSingleGameWon, setIsSingleGameWon] = useState(false)
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isSingleWinModalOpen, setIsSingleWinModalOpen] = useState(false)
+  const [isSingleGameLost, setIsSingleGameLost] = useState(false)
+  const [isSingleLossModalOpen, setIsSingleLossModalOpen] = useState(false)
+
   const [isWinModalOpen, setIsWinModalOpen] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false)
@@ -70,6 +75,12 @@ function App() {
     }
   }, [isSingleGameWon])
 
+  useEffect(() => {
+    if (isSingleGameLost) {
+      setIsSingleLossModalOpen(true)
+    }
+  }, [isSingleGameLost])
+
   const onChar = (value: string) => {
     if (currentGuess.length < 5 && guesses.length < 6 && !isGameWon) {
       setCurrentGuess(`${currentGuess}${value}`)
@@ -101,18 +112,20 @@ function App() {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
 
-      if (winningWord && wonGames === 4) {
+      if ((winningWord && wonGames === 4) || transpiredGames === 4) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
         return setIsGameWon(true)
       }
       if (winningWord && wonGames < 5) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
         setWonGames(wonGames + 1)
+        setTranspiredGames(transpiredGames + 1)
         return setIsSingleGameWon(true)
       }
       if (guesses.length === 5) {
         setStats(addStatsForCompletedGame(stats, guesses.length + 1))
-        setIsGameLost(true)
+        setIsSingleGameLost(true)
+        setTranspiredGames(transpiredGames + 1)
       }
     }
   }
@@ -173,6 +186,23 @@ function App() {
           }, 1000)
         }}
       />
+      <SingleLossModal
+        solution={currentSolution}
+        isOpen={isSingleLossModalOpen}
+        handleClose={() => setIsWinModalOpen(false)}
+        guesses={guesses}
+        handleLoadNext={() => {
+          setIsSingleGameLost(false)
+          setIsSingleLossModalOpen(false)
+          //setShareComplete(true)
+          setSolution(getNextSolution())
+          return setTimeout(() => {
+            //setShareComplete(false)
+            setGuesses(refreshWordAndGuesses())
+            //console.log('hello' + currentSolution)
+          }, 1000)
+        }}
+      />
       <InfoModal
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
@@ -197,10 +227,10 @@ function App() {
 
       <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
       <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
-      <Alert
+      {/* <Alert
         message={`You lost, the word was ${currentSolution}`}
         isOpen={isGameLost}
-      />
+      /> */}
       {/*  <Alert
         message="Game copied to clipboard"
         isOpen={shareComplete}
