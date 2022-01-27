@@ -112,10 +112,7 @@ function App() {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
 
-      if (
-        (winningWord && transpiredGames === 4) ||
-        (winningWord && transpiredGames === 4)
-      ) {
+      if (winningWord && transpiredGames === 4) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
         return setIsGameWon(true)
       }
@@ -186,11 +183,11 @@ function App() {
           setIsSingleWinModalOpen(false)
           //setShareComplete(true)
           setSolution(getNextSolution())
-          return setTimeout(() => {
+          setGuesses(refreshWordAndGuesses())
+          /* return setTimeout(() => {
             //setShareComplete(false)
-            setGuesses(refreshWordAndGuesses())
             //console.log('hello' + currentSolution)
-          }, 1000)
+          }, 1000) */
         }}
       />
       <SingleLossModal
@@ -203,11 +200,11 @@ function App() {
           setIsSingleLossModalOpen(false)
           //setShareComplete(true)
           setSolution(getNextSolution())
-          return setTimeout(() => {
+          setGuesses(refreshWordAndGuesses())
+          /* return setTimeout(() => {
             //setShareComplete(false)
-            setGuesses(refreshWordAndGuesses())
             //console.log('hello' + currentSolution)
-          }, 1000)
+          }, 1000) */
         }}
       />
       <InfoModal
