@@ -11,3 +11,8 @@
   ### NEXT STEP:
 
   - pass the 5-word list into my old createUniqueRandomGenerator function to get a generator that I can call with getNextRandomWord(getRandomPiece)
+
+### remaining bugs
+
+losing the final game counts as a win somehow
+solution, step through with debugger to find out where the "+ 1" is happening
