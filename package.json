@@ -1,6 +1,6 @@
 {
   "name": "wordle",
-  "homepage": "https://davidmbrister.github.io/multi-round-wordle/",
+  "homepage": "https://wordle-multiround.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "engines": {
