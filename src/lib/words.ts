@@ -20,6 +20,7 @@ const CUSTOMWORDS = [
   'lanes',
   'roads',
   'pedal',
+  'route',
 ]
 
 let wordBag = createUniqueRandomGenerator(CUSTOMWORDS)
