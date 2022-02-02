@@ -5,7 +5,22 @@ import {
   getRandomItem,
 } from './createUniqueRandomGenerator'
 
-const CUSTOMWORDS = ['cigar', 'rebut', 'sissy', 'humph', 'awake']
+const CUSTOMWORDS = [
+  'bench',
+  'curbs',
+  'nacto',
+  'cycle',
+  'rider',
+  'train',
+  'nimby',
+  'trees',
+  'tolls',
+  'buses',
+  'bikes',
+  'lanes',
+  'roads',
+  'pedal',
+]
 
 let wordBag = createUniqueRandomGenerator(CUSTOMWORDS)
 
